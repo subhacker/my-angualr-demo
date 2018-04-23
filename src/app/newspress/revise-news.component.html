@@ -1,0 +1,30 @@
+
+<div>
+  <div id="revise-news">
+  <h3>修改新闻</h3>
+  <form id='form' class='form-horizontal' (ngSubmit)="submit()">
+    <div class="form-group">
+      <label class='col-md-2' for="newsTitle">新闻标题<span class='requireDot'>*</span></label>
+      <input  type='text' class="form-control input-sm col-md-5" id="newsTitle" name="newsTitle" [(ngModel)]="newsItem.title" />
+      <span  *ngIf="dummyNewsTitle"   class='err-message col-md-2'>标题不得为空</span>
+    </div>
+    <div class="form-group">
+      <label class='col-md-2' for="newsOption">模块序号<span class='requireDot'>*</span></label>
+      <select id='newsOption'   class='form-control input-sm col-md-5' name="newsOption" [(ngModel)]="newsItem.module">
+        <option value='none' value="none">请选择</option>
+        <option *ngFor="let item of moduleList" [value]="item.moduleName">{{item.moduleName}}</option>
+      </select>
+      <span *ngIf="dummyNewsOption"  class='err-message col-md-2'>请指定模块</span>
+
+    </div>
+    <div class="form-group">
+      <label class='col-md-2' for="newsContent">新闻内容<span class='requireDot'>*</span></label>
+      <textarea rows='12'   class="form-control col-md-5 " id="newsContent" name="newsContent" [(ngModel)]="newsItem.newsContent" ></textarea>
+      <span *ngIf="dummyNewsContent"  class='err-message col-md-2'>内容不能为空</span>
+    </div>
+    <button    type="submit" class="btn btn-default btn-sm">添加</button>
+  </form>
+</div>
+
+
+</div>
